@@ -81,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
 //                        cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true);
                         (view, hourOfDay, minute) -> {
                         int hour = hourOfDay > 12 ? hourOfDay - 12 : hourOfDay;
-                        if(hour > 12){
+                        if(hourOfDay < 12){
                             rgBuoi.check(R.id.rbSang);
-                        }else {
+                        }else if(hourOfDay > 12){
                             rgBuoi.check(R.id.rbChieu);
                         }
                         if (hour == 0) hour = 12;
