@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">On2TX Git</string>
 
+    <string name="hint_name">Nhập tên báo thức</string>
+    <string name="hint_time">Chọn giờ</string>
+    <string name="btn_time">Chọn giờ</string>
+    <string name="btn_add">Thêm</string>
+    <string name="btn_delete">Xóa</string>
+    <string name="btn_tong">Tổng</string>
+    <string name="rb_sang">Sáng</string>
+    <string name="btn_update">Cập nhật</string>
+    <string name="rb_chieu">Chiều</string>
+    <string name="loop">Lặp lại</string>
 
+    <string-array name="days_of_week">
+        <item>Thứ 2</item>
+        <item>Thứ 3</item>
+        <item>Thứ 4</item>
+        <item>Thứ 5</item>
+        <item>Thứ 6</item>
+        <item>Thứ 7</item>
+        <item>Chủ Nhật</item>
+    </string-array>
 </resources>

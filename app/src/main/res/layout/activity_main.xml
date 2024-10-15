@@ -2,8 +2,120 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp">
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_name"
+            android:inputType="textPersonName"
+            tools:ignore="TouchTargetSizeCheck"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp">
+        <Spinner
+            android:id="@+id/spinnerDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="TouchTargetSizeCheck"
+            android:padding="10dp"
+            android:background="@android:drawable/spinner_dropdown_background"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp">
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hint_time"
+            android:enabled="false"
+            tools:ignore="TouchTargetSizeCheck"/>
+
+        <Button
+            android:id="@+id/btnTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_time" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/grBuoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbSang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rb_sang" />
+
+        <RadioButton
+            android:id="@+id/rbChieu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rb_chieu" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/loop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loop"
+        android:paddingBottom="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp">
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_add" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_update" />
+
+        <Button
+            android:id="@+id/btnTong"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_tong" />
+    </LinearLayout>
+    <TextView android:id="@+id/textTong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Tong bao thuc: 0"/>
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
