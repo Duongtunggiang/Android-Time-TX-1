@@ -8,6 +8,8 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -75,13 +77,50 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Calendar cal = Calendar.getInstance();
                 TimePickerDialog timePicker = new TimePickerDialog(MainActivity.this,
-                        (view, hourOfDay, minute) -> edtTime.setText(hourOfDay + ":" + (minute < 10 ? "0" + minute : minute)),
-                        cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true);
+//                        (view, hourOfDay, minute) -> edtTime.setText(hourOfDay + ":" + (minute < 10 ? "0" + minute : minute)),
+//                        cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true);
+                        (view, hourOfDay, minute) -> {
+                        int hour = hourOfDay > 12 ? hourOfDay - 12 : hourOfDay;
+                        if(hour > 12){
+                            rgBuoi.check(R.id.rbSang);
+                        }else {
+                            rgBuoi.check(R.id.rbChieu);
+                        }
+                        if (hour == 0) hour = 12;
+                        String formattedMinute = (minute < 10) ? "0" + minute : String.valueOf(minute);
 
-                timePicker.setTitle("Chon gio");
+                        edtTime.setText(hour + ":" + formattedMinute);
+                        edtTime.setSelection(edtTime.getText().length());
+
+                }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true);
+
+
+                timePicker.setTitle("Chọn giờ");
                 timePicker.show();
             }
         });
+        // Nhap so gio tu ban phim
+//        edtTime.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                try {
+//                    if (s.length() == 2) {
+//                        // Chuyển con trỏ đến vị trí nhập phút
+//                        edtTime.setSelection(s.length() + 1); // +1 để nhảy qua dấu ':'
+//                    }
+//                } catch (Exception e) {
+//                    Toast.makeText(MainActivity.this, "Định dạng thời gian không hợp lệ", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {}
+//        });
+
+
 
         lvBaoThuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -169,6 +208,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return null;
         }
+
+//        if (!time.matches("\\d{1,2}:\\d{2}")) {
+//            Toast.makeText(MainActivity.this, "Vui lòng nhập thời gian theo định dạng HH:MM", Toast.LENGTH_SHORT).show();
+//            return null;
+//        }
 
         int selectedBuoiId = rgBuoi.getCheckedRadioButtonId();
         if (selectedBuoiId == -1) {
